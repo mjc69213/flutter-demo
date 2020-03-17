@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'pet_card.dart';
+import 'bank_card.dart';
 
 const PetCardViewModel petCardData = PetCardViewModel(
 	coverUrl: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1425538345,901220022&fm=26&gp=0.jpg',
@@ -14,6 +15,16 @@ const PetCardViewModel petCardData = PetCardViewModel(
 	shares: 126
 );
 
+const BankCardViewModel creditCardData = BankCardViewModel(
+  bankName: '招商银行',
+  bankLogoUrl: 'assets/pics/bank_zs.png',
+  cardType: '储蓄卡',
+  cardNumber: '6210  ****  ****  1426',
+  cardColors: [Color(0xFFF17B68), Color(0xFFE95F66)],
+  validDate: '10/27',
+);
+
+
 class BasicWidgetsDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -26,6 +37,7 @@ class BasicWidgetsDemo extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           PetCardDemo(postData: petCardData,),
+          BankCardDemo(postData: creditCardData,),
         ],
       ),
     );
