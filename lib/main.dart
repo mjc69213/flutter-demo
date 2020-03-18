@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_training/views/basic_widgets/index.dart';
+import 'package:flutter_training/views/list_view/index.dart';
 
 main() => runApp(MyApp());
 
@@ -7,10 +8,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(primaryColor: Colors.blue),
+      theme: ThemeData(primaryColor: Colors.blue, highlightColor: Colors.transparent, splashColor: Colors.transparent),
       home: HomePage(),
       routes: {
         'basic_widgets': (context) => BasicWidgetsDemo(),
+        'list_view': (context) => ListViewDemo(),
       },
     );
   }
@@ -34,7 +36,11 @@ const List<Example> EXAMPLES = [
   Example(
       title: '基础组件',
       description: '容器、行、列、文字、图片、图标等最常用组件，是构成界面的基础',
-      routeName: 'basic_widgets')
+      routeName: 'basic_widgets'),
+  Example(
+      title: 'ListView组件',
+      description: '滚动型容器列表组件，支持下拉刷新，上拉加载等交互操作',
+      routeName: 'list_view')
 ];
 
 class Example {
@@ -55,56 +61,56 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text('Flutter Training')),
       body: GridView.builder(
-      itemCount: EXAMPLES.length,
-      padding: EdgeInsets.all(16),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisSpacing: 16, // 侧轴方向的间距
-        mainAxisSpacing: 16, // 主轴方向的间距
-        crossAxisCount: 2, // 列数一行有几个子元素
-        childAspectRatio: 1.0,
-      ),
-      itemBuilder: (BuildContext context, int index) {
-        return FlatButton(
-          color: COLORS[index % COLORS.length],
-          onPressed: () =>
-              Navigator.pushNamed(context, EXAMPLES[index].routeName),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              // 标题
-              Expanded(
-                flex: 1,
-                child: Center(
-                  child: Text(
-                    EXAMPLES[index].title,
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
+        itemCount: EXAMPLES.length,
+        padding: EdgeInsets.all(16),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisSpacing: 16, // 侧轴方向的间距
+          mainAxisSpacing: 16, // 主轴方向的间距
+          crossAxisCount: 2, // 列数一行有几个子元素
+          childAspectRatio: 1.0,
+        ),
+        itemBuilder: (BuildContext context, int index) {
+          return FlatButton(
+            color: COLORS[index % COLORS.length],
+            onPressed: () =>
+                Navigator.pushNamed(context, EXAMPLES[index].routeName),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                // 标题
+                Expanded(
+                  flex: 1,
+                  child: Center(
+                    child: Text(
+                      EXAMPLES[index].title,
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
                   ),
                 ),
-              ),
-              // 描述
-              Expanded(
-                flex: 1,
-                child: Text(
-                  EXAMPLES[index].description,
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white70),
-                ),
-              )
-            ],
-          ),
-        );
-      },
-    ),
+                // 描述
+                Expanded(
+                  flex: 1,
+                  child: Text(
+                    EXAMPLES[index].description,
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white70),
+                  ),
+                )
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }
