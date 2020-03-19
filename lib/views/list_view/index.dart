@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'builder_usage.dart';
-import 'friend_card.dart';
 import 'normal_usage.dart';
 import 'pull_down_refresh_usage.dart';
 import 'pull_upload_more_usage.dart';
+import 'separated_usage.dart';
+
+
 
 
 
