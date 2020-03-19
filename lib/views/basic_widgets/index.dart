@@ -80,7 +80,6 @@ const FriendCircleViewModel friendCircleData = FriendCircleViewModel(
 class BasicWidgetsDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         title: Text('基础组件', style: TextStyle(fontSize: 16),),
